@@ -261,13 +261,13 @@ export function CheckoutModal({ isOpen, onClose, directCheckoutItems = [] }: Che
   return (
     <>
       <Dialog open={isOpen && step !== 'success' && step !== 'failed'} onOpenChange={onClose}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg">
+        <DialogContent className="w-[95vw] sm:w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg p-3 sm:p-6">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Checkout</DialogTitle>
+            <DialogTitle className="text-lg sm:text-2xl">Checkout</DialogTitle>
           </DialogHeader>
 
           {/* Progress Steps */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-4 sm:mb-8 gap-1 sm:gap-2">
             {steps.map((s, idx) => (
               <div key={s} className="flex items-center flex-1">
                 <motion.div
@@ -276,7 +276,7 @@ export function CheckoutModal({ isOpen, onClose, directCheckoutItems = [] }: Che
                     backgroundColor: idx <= currentStepIndex ? '#D4A574' : '#f0f0f0',
                     color: idx <= currentStepIndex ? 'white' : '#666',
                   }}
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-bold"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-base"
                 >
                   {idx < currentStepIndex ? <Check size={20} /> : <span>{idx + 1}</span>}
                 </motion.div>
@@ -300,11 +300,11 @@ export function CheckoutModal({ isOpen, onClose, directCheckoutItems = [] }: Che
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="p-6 space-y-4">
-                  <h2 className="text-xl font-bold">Select Delivery Address</h2>
+                <Card className="p-3 sm:p-6 space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-xl font-bold">Select Delivery Address</h2>
 
                   {addresses.length > 0 && (
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       {addresses.map((address) => (
                         <motion.label
                           key={address.id}
@@ -419,11 +419,11 @@ export function CheckoutModal({ isOpen, onClose, directCheckoutItems = [] }: Che
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="p-6 space-y-4">
-                  <h2 className="text-xl font-bold">Select Shipping Method</h2>
+                <Card className="p-3 sm:p-6 space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-xl font-bold">Select Shipping Method</h2>
 
                   {shippingMethods.length > 0 ? (
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       {shippingMethods.map((method) => (
                         <motion.label
                           key={method.id}
@@ -492,14 +492,14 @@ export function CheckoutModal({ isOpen, onClose, directCheckoutItems = [] }: Che
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="p-6 space-y-6">
-                  <h2 className="text-xl font-bold">Order Review</h2>
+                <Card className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+                  <h2 className="text-base sm:text-xl font-bold">Order Review</h2>
 
                   {/* Address Summary */}
                   <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-2">Delivery Address</p>
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-2">Delivery Address</p>
                     {addresses.find((a) => a.id === selectedShippingAddress) && (
-                      <div className="p-3 bg-gray-50 rounded-lg text-sm">
+                      <div className="p-2 sm:p-3 bg-gray-50 rounded-lg text-xs sm:text-sm">
                         <p className="font-semibold">
                           {addresses.find((a) => a.id === selectedShippingAddress)?.full_name}
                         </p>

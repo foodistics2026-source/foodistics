@@ -59,52 +59,52 @@ export const CategoriesTable = () => {
 
   if (categories.length === 0) {
     return (
-      <div className="border rounded-lg p-8 text-center">
-        <p className="text-gray-500 text-lg">No categories found</p>
-        <p className="text-gray-400 text-sm mt-2">Create your first category to get started</p>
+      <div className="border rounded-lg p-4 sm:p-8 text-center">
+        <p className="text-gray-500 text-sm sm:text-lg">No categories found</p>
+        <p className="text-gray-400 text-xs sm:text-sm mt-2">Create your first category to get started</p>
       </div>
     );
   }
 
   return (
     <>
-      <div className="border rounded-lg">
+      <div className="border rounded-lg overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50">
-              <TableHead className="font-semibold">Name</TableHead>
-              <TableHead className="font-semibold">Created</TableHead>
-              <TableHead className="font-semibold">Actions</TableHead>
+              <TableHead className="font-semibold text-xs sm:text-sm">Name</TableHead>
+              <TableHead className="font-semibold text-xs sm:text-sm hidden sm:table-cell">Created</TableHead>
+              <TableHead className="font-semibold text-xs sm:text-sm">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {categories.map((category) => (
               <TableRow key={category.id} className="hover:bg-gray-50">
-                <TableCell className="font-medium text-lg">{category.name}</TableCell>
-                <TableCell>
+                <TableCell className="font-medium text-sm sm:text-base p-2 sm:p-4 max-w-[150px] truncate">{category.name}</TableCell>
+                <TableCell className="text-xs sm:text-sm hidden sm:table-cell p-2 sm:p-4">
                   {new Date(category.created_at).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',
                   })}
                 </TableCell>
-                <TableCell className="space-x-2">
+                <TableCell className="space-x-1 sm:space-x-2 p-2 sm:p-4">
                   <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
                     <DialogTrigger asChild>
                       <Button
                         variant="outline"
                         size="sm"
-                        className="bg-blue-50 hover:bg-blue-100 text-blue-600"
+                        className="bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs h-7"
                         onClick={() => setEditingCategory(category)}
                       >
-                        <Pencil className="h-4 w-4" />
-                        Edit
+                        <Pencil className="h-3 w-3" />
+                        <span className="hidden sm:inline ml-1">Edit</span>
                       </Button>
                     </DialogTrigger>
                     {editingCategory && (
-                      <DialogContent>
+                      <DialogContent className="w-[95vw] sm:max-w-md rounded-lg p-3 sm:p-6">
                         <DialogHeader>
-                          <DialogTitle>Edit Category</DialogTitle>
+                          <DialogTitle className="text-lg">Edit Category</DialogTitle>
                         </DialogHeader>
                         <CategoryForm
                           category={editingCategory}
@@ -117,11 +117,11 @@ export const CategoriesTable = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="bg-red-50 hover:bg-red-100 text-red-600"
+                    className="bg-red-50 hover:bg-red-100 text-red-600 text-xs h-7"
                     onClick={() => setDeleteId(category.id)}
                   >
-                    <Trash2 className="h-4 w-4" />
-                    Delete
+                    <Trash2 className="h-3 w-3" />
+                    <span className="hidden sm:inline ml-1">Delete</span>
                   </Button>
                 </TableCell>
               </TableRow>

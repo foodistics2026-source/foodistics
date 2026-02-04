@@ -78,93 +78,94 @@ export const ProductsTable = () => {
 
   return (
     <>
-      <div className="border rounded-lg">
+      <div className="border rounded-lg overflow-x-auto">
         {groupedProducts.map(({ category, products: categoryProducts }) => (
           <div key={category.id} className="border-b last:border-b-0">
             {/* Category Header */}
-            <div className="bg-gray-50 p-4 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition"
+            <div className="bg-gray-50 p-2 sm:p-4 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition"
               onClick={() => toggleCategory(category.id)}>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 {expandedCategories.has(category.id) ? (
-                  <ChevronUp className="w-5 h-5 text-tea-gold" />
+                  <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-tea-gold flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-tea-gold" />
+                  <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-tea-gold flex-shrink-0" />
                 )}
-                <h3 className="font-semibold text-lg">{category.name}</h3>
-                <span className="text-sm text-gray-500 bg-white px-2 py-1 rounded">
-                  {categoryProducts.length} products
+                <h3 className="font-semibold text-sm sm:text-lg truncate">{category.name}</h3>
+                <span className="text-xs sm:text-sm text-gray-500 bg-white px-2 py-1 rounded whitespace-nowrap">
+                  {categoryProducts.length}
                 </span>
               </div>
             </div>
 
             {/* Products Table */}
             {expandedCategories.has(category.id) && (
-              <Table>
-                <TableHeader>
-                  <TableRow className="bg-gray-50">
-                    <TableHead>Image</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Price</TableHead>
-                    <TableHead>Sale Price</TableHead>
-                    <TableHead>Stock</TableHead>
-                    <TableHead>Bestseller</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {categoryProducts.map((product) => (
-                    <TableRow key={product.id}>
-                      <TableCell>
-                        <img
-                          src={product.image_url || 'placeholder.svg'}
-                          alt={product.name}
-                          className="w-12 h-12 object-cover rounded"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'placeholder.svg';
-                          }}
-                        />
-                      </TableCell>
-                      <TableCell className="font-medium">{product.name}</TableCell>
-                      <TableCell>₹{product.price.toFixed(2)}</TableCell>
-                      <TableCell>
-                        {product.sale_price ? `₹${product.sale_price.toFixed(2)}` : '-'}
-                      </TableCell>
-                      <TableCell>
-                        <span className={`px-3 py-1 rounded text-sm ${
-                          product.stock > 0 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-red-100 text-red-800'
-                        }`}>
-                          {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        {product.is_bestseller ? (
-                          <Badge className="bg-tea-gold text-white gap-1">
-                            <Star className="h-3 w-3 fill-current" />
-                            Bestseller
-                          </Badge>
-                        ) : (
-                          <span className="text-gray-400 text-sm">-</span>
-                        )}
-                      </TableCell>
-                      <TableCell className="space-x-2">
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-gray-50">
+                      <TableHead className="text-xs sm:text-sm">Image</TableHead>
+                      <TableHead className="text-xs sm:text-sm">Name</TableHead>
+                      <TableHead className="text-xs sm:text-sm">Price</TableHead>
+                      <TableHead className="text-xs sm:text-sm hidden sm:table-cell">Sale Price</TableHead>
+                      <TableHead className="text-xs sm:text-sm">Stock</TableHead>
+                      <TableHead className="text-xs sm:text-sm hidden md:table-cell">Best</TableHead>
+                      <TableHead className="text-xs sm:text-sm">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {categoryProducts.map((product) => (
+                      <TableRow key={product.id}>
+                        <TableCell className="p-2 sm:p-4">
+                          <img
+                            src={product.image_url || 'placeholder.svg'}
+                            alt={product.name}
+                            className="w-8 h-8 sm:w-12 sm:h-12 object-cover rounded"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'placeholder.svg';
+                            }}
+                          />
+                        </TableCell>
+                        <TableCell className="font-medium text-xs sm:text-sm p-2 sm:p-4 max-w-[120px] truncate">{product.name}</TableCell>
+                        <TableCell className="text-xs sm:text-sm p-2 sm:p-4">₹{product.price.toFixed(0)}</TableCell>
+                        <TableCell className="text-xs sm:text-sm p-2 sm:p-4 hidden sm:table-cell">
+                          {product.sale_price ? `₹${product.sale_price.toFixed(0)}` : '-'}
+                        </TableCell>
+                        <TableCell className="text-xs sm:text-sm p-2 sm:p-4">
+                          <span className={`px-2 py-1 rounded text-xs ${
+                            product.stock > 0 
+                              ? 'bg-green-100 text-green-800' 
+                              : 'bg-red-100 text-red-800'
+                          }`}>
+                            {product.stock > 0 ? `${product.stock}` : 'Out'}
+                          </span>
+                        </TableCell>
+                        <TableCell className="text-xs sm:text-sm p-2 sm:p-4 hidden md:table-cell">
+                          {product.is_bestseller ? (
+                            <Badge className="bg-tea-gold text-white text-xs gap-1">
+                              <Star className="h-2 w-2 fill-current" />
+                              Yes
+                            </Badge>
+                          ) : (
+                            <span className="text-gray-400 text-xs">-</span>
+                          )}
+                        </TableCell>
+                      <TableCell className="space-x-2 p-2 sm:p-4">
                         <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
                           <DialogTrigger asChild>
                             <Button
                               variant="outline"
                               size="sm"
-                              className="bg-blue-50 hover:bg-blue-100 text-blue-600"
+                              className="bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs h-7"
                               onClick={() => setEditingProduct(product)}
                             >
-                              <Pencil className="h-4 w-4" />
-                              Edit
+                              <Pencil className="h-3 w-3" />
+                              <span className="hidden sm:inline ml-1">Edit</span>
                             </Button>
                           </DialogTrigger>
                           {editingProduct && (
                             <DialogContent className="w-[95vw] sm:max-w-2xl max-h-[95vh] rounded-lg p-4 sm:p-6 flex flex-col">
                               <DialogHeader className="flex-shrink-0">
-                                <DialogTitle>Edit Product</DialogTitle>
+                                <DialogTitle className="text-lg">Edit Product</DialogTitle>
                               </DialogHeader>
                               <div className="flex-1 overflow-y-auto scrollbar-hide">
                                 <ProductForm
@@ -179,24 +180,25 @@ export const ProductsTable = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="bg-red-50 hover:bg-red-100 text-red-600"
+                          className="bg-red-50 hover:bg-red-100 text-red-600 text-xs h-7"
                           onClick={() => setDeleteId(product.id)}
                         >
-                          <Trash2 className="h-4 w-4" />
-                          Delete
+                          <Trash2 className="h-3 w-3" />
+                          <span className="hidden sm:inline ml-1">Delete</span>
                         </Button>
                       </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
+              </div>
             )}
           </div>
         ))}
 
         {/* Empty State */}
         {groupedProducts.every(({ products }) => products.length === 0) && (
-          <div className="p-8 text-center">
+          <div className="p-4 sm:p-8 text-center">
             <p className="text-gray-500 text-lg">No products found</p>
             <p className="text-gray-400 text-sm mt-2">Create a category and add products to get started</p>
           </div>
