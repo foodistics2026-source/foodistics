@@ -1,5 +1,5 @@
 # FOODISTICS Tea Company Robots.txt
-# Website: https://foodistics.com
+# Website: https://getfoodistics.in
 # Updated: 2026-02-04
 
 # Google Bot
@@ -42,10 +42,10 @@ Disallow: /auth/
 Crawl-delay: 2
 
 # Sitemap location
-Sitemap: https://foodistics.com/sitemap.xml
+Sitemap: https://getfoodistics.in/sitemap.xml
 
 # Rate limiting
 Request-rate: 30/1m
 
 # Host
-Host: https://foodistics.com
+Host: https://getfoodistics.in

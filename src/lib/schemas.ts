@@ -29,7 +29,7 @@ export const productSchemaTemplate = (product: {
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://foodistics.com/shop`,
+      "url": `https://getfoodistics.in/shop`,
       "priceCurrency": product.currency,
       "price": product.price.toString(),
       "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
@@ -52,7 +52,7 @@ export const productSchemaTemplate = (product: {
  *   "@context": "https://schema.org/",
  *   "@type": "Product",
  *   "name": "Premium Assam Black Tea",
- *   "image": "https://foodistics.com/tea-assam.jpg",
+ *   "image": "https://getfoodistics.in/tea-assam.jpg",
  *   "description": "Handpicked premium Assam black tea with rich, malty flavor from India's finest gardens",
  *   "sku": "assam-black-tea",
  *   "brand": {
@@ -61,7 +61,7 @@ export const productSchemaTemplate = (product: {
  *   },
  *   "offers": {
  *     "@type": "Offer",
- *     "url": "https://foodistics.com/shop",
+ *     "url": "https://getfoodistics.in/shop",
  *     "priceCurrency": "INR",
  *     "price": "499",
  *     "availability": "https://schema.org/InStock"
@@ -150,13 +150,13 @@ export const eventSchemaTemplate = (event: {
     ...(event.location && {
       "location": {
         "@type": "VirtualLocation",
-        "url": "https://foodistics.com"
+        "url": "https://getfoodistics.in"
       }
     }),
     ...(event.offer && {
       "offers": {
         "@type": "Offer",
-        "url": "https://foodistics.com",
+        "url": "https://getfoodistics.in",
         "price": event.offer.price.toString(),
         "priceCurrency": event.offer.currency,
         "availability": "https://schema.org/InStock"
@@ -195,7 +195,7 @@ export const articleSchemaTemplate = (article: {
       "name": "Foodistics × Swach Tea",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://foodistics.com/favicon.ico"
+        "url": "https://getfoodistics.in/favicon.ico"
       }
     },
     "articleBody": article.articleBody

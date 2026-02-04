@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="128" fill="#1a3a2a"/>
+  
+  <!-- Tea leaf shape -->
+  <g transform="translate(128, 128)">
+    <!-- Main leaf -->
+    <path d="M 0,-60 Q 35,-80 50,-40 Q 55,-20 45,0 Q 35,25 0,40 Q -35,25 -45,0 Q -55,-20 -50,-40 Q -35,-80 0,-60" fill="#D4A574" stroke="#1a3a2a" stroke-width="2"/>
+    
+    <!-- Leaf vein lines -->
+    <path d="M 0,-55 Q 15,-45 15,0 Q 15,25 0,35" fill="none" stroke="#1a3a2a" stroke-width="1.5" opacity="0.6"/>
+    <path d="M -8,-40 Q -10,-20 -8,15" fill="none" stroke="#1a3a2a" stroke-width="1" opacity="0.4"/>
+    <path d="M 8,-40 Q 10,-20 8,15" fill="none" stroke="#1a3a2a" stroke-width="1" opacity="0.4"/>
+    
+    <!-- Small decorative element - tea steam -->
+    <path d="M -15,-70 Q -18,-85 -12,-95" fill="none" stroke="#D4A574" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 0,-75 Q -2,-92 5,-100" fill="none" stroke="#D4A574" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 15,-70 Q 18,-85 12,-95" fill="none" stroke="#D4A574" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  </g>
+</svg>
