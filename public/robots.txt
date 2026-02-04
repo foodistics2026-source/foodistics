@@ -1,0 +1,51 @@
+# FOODISTICS Tea Company Robots.txt
+# Website: https://foodistics.com
+# Updated: 2026-02-04
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Crawl-delay: 0
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Crawl-delay: 1
+
+# Facebook Bot
+User-agent: facebookexternalhit
+Allow: /
+Disallow:
+
+# Twitter Bot
+User-agent: Twitterbot
+Allow: /
+Disallow:
+
+# LinkedIn Bot
+User-agent: LinkedInBot
+Allow: /
+Disallow:
+
+# All other bots
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /*.json
+Disallow: /auth
+Disallow: /auth/
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://foodistics.com/sitemap.xml
+
+# Rate limiting
+Request-rate: 30/1m
+
+# Host
+Host: https://foodistics.com

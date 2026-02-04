@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://foodistics.com/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://foodistics.com/shop</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://foodistics.com/orders</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://foodistics.com/account</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Authentication Pages -->
+  <url>
+    <loc>https://foodistics.com/auth/signin</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://foodistics.com/auth/signup</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Admin Pages (if indexing required) -->
+  <url>
+    <loc>https://foodistics.com/admin</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Product Categories (Homepage sections serve as these) -->
+  <!-- These are anchor links but listed for reference -->
+  <!-- Assam Black Tea -->
+  <url>
+    <loc>https://foodistics.com/#products</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://foodistics.com/#about</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Process Section -->
+  <url>
+    <loc>https://foodistics.com/#process</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Image URLs for Rich Snippets -->
+  <url>
+    <loc>https://foodistics.com/</loc>
+    <image:image>
+      <image:loc>https://foodistics.com/tea-assam.jpg</image:loc>
+      <image:title>Premium Assam Black Tea</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://foodistics.com/tea-gold.jpg</image:loc>
+      <image:title>Premium Gold Blend Tea</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://foodistics.com/tea-green.jpg</image:loc>
+      <image:title>Premium Green Tea</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://foodistics.com/tea-herbal.jpg</image:loc>
+      <image:title>Premium Herbal Tea</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://foodistics.com/tea-masala.jpg</image:loc>
+      <image:title>Premium Masala Chai Tea</image:title>
+    </image:image>
+  </url>
+</urlset>
