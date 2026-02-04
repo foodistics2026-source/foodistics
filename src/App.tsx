@@ -18,11 +18,14 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   useEffect(() => {
-    // Prevent back button from closing modals on mobile
+    // Prevent back button from closing modals or sidebars on mobile
     const handlePopState = (e: PopStateEvent) => {
-      // Check if any modals are open
+      // Check if any modals or sidebars are open
       const dialogOverlay = document.querySelector('[data-state="open"]');
-      if (dialogOverlay) {
+      const sidebarOpen = document.querySelector('[data-side][data-state="open"]');
+      const sheetOpen = document.body.style.pointerEvents === 'none';
+      
+      if (dialogOverlay || sidebarOpen || sheetOpen) {
         // Prevent the default back behavior and push state again
         e.preventDefault();
         window.history.pushState(null, '', window.location.href);
