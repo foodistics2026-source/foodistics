@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase';
 import { Address, CartItem, Order } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
+import { sendOrderNotificationToTelegram } from '@/lib/telegram';
 
 // ============= ADDRESS HOOKS =============
 
@@ -346,6 +347,36 @@ export const useCreateOrder = () => {
         if (updateError) {
           // Silent error
         }
+      }
+
+      // Send Telegram notification to admin
+      try {
+        const userInfo = await supabase
+          .from('users')
+          .select('full_name, email')
+          .eq('id', order.user_id)
+          .single();
+
+        if (userInfo.data) {
+          sendOrderNotificationToTelegram({
+            orderId: newOrder.id,
+            orderNumber: order.order_number,
+            customerName: userInfo.data.full_name || 'Customer',
+            customerEmail: userInfo.data.email || 'N/A',
+            totalAmount: order.total_amount,
+            itemCount: items.length,
+            items: items.map((item) => ({
+              productName: item.product_name,
+              quantity: item.quantity,
+              price: item.price_at_purchase,
+            })),
+          }).catch((err) => {
+            console.error('Failed to send Telegram notification:', err);
+            // Don't throw error, just log it
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching user info for Telegram notification:', error);
       }
 
       return newOrder;
