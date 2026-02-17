@@ -1,0 +1,35 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Run every 6 hours to prevent Supabase inactivity timeout
+    - cron: '0 */6 * * *'
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    name: Keep Supabase Connection Active
+    
+    steps:
+      - name: Keep Supabase alive
+        run: |
+          echo "Pinging Supabase to keep connection active..."
+          
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X GET \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/categories?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          
+          echo "HTTP Status: $HTTP_CODE"
+          echo "Response: $BODY"
+          
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "✅ Keep-alive ping successful at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          else
+            echo "⚠️ Unexpected HTTP status: $HTTP_CODE"
+            exit 1
+          fi

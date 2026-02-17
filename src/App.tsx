@@ -15,11 +15,15 @@ import SignIn from "./pages/auth/SignIn";
 import AdminSignIn from "./pages/auth/AdminSignIn";
 import NotFound from "./pages/NotFound";
 import WhatsAppWidget from "./components/WhatsAppWidget";
+import { initializeKeepAlive } from "@/lib/keepAlive";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   useEffect(() => {
+    // Initialize Supabase keep-alive to prevent connection timeout
+    const cleanupKeepAlive = initializeKeepAlive();
+
     // Prevent back button from closing modals or sidebars on mobile
     const handlePopState = (e: PopStateEvent) => {
       // Check if any modals or sidebars are open
@@ -38,7 +42,10 @@ const AppContent = () => {
     // Push an initial state so back button works
     window.history.pushState(null, '', window.location.href);
 
-    return () => window.removeEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      cleanupKeepAlive();
+    };
   }, []);
 
   return (
