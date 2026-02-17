@@ -114,7 +114,7 @@ export function ProductModal({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6">
           {/* Product Image */}
           <div className="flex flex-col gap-2 sm:gap-4">
-            <div className="bg-gray-100 rounded-lg overflow-hidden h-48 sm:h-72 md:h-96">
+            <div className="bg-gray-100 rounded-lg overflow-hidden w-full aspect-square">
               <img
                 src={product.image_url}
                 alt={product.name}

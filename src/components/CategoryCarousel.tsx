@@ -19,7 +19,7 @@ const ProductCardSmall = ({ product, onSelect }: { product: Product; onSelect: (
 
   return (
     <motion.div
-      className="group relative cursor-pointer flex-shrink-0 w-56"
+      className="group relative cursor-pointer flex-shrink-0 w-32 sm:w-40 md:w-44"
       whileHover={{ y: -8 }}
       onClick={() => onSelect(product)}
     >
@@ -39,12 +39,12 @@ const ProductCardSmall = ({ product, onSelect }: { product: Product; onSelect: (
         )}
 
         {/* Image Container */}
-        <div className="relative h-48 overflow-hidden bg-gray-100">
+        <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
           {product.image_url ? (
             <motion.img
               src={product.image_url}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
@@ -57,32 +57,32 @@ const ProductCardSmall = ({ product, onSelect }: { product: Product; onSelect: (
         </div>
 
         {/* Content */}
-        <div className="p-4 flex-1 flex flex-col justify-between">
+        <div className="p-2 sm:p-3 flex-1 flex flex-col justify-between">
           <div>
-            <h4 className="font-serif font-bold text-base text-foreground mb-2 line-clamp-2">
+            <h4 className="font-serif font-bold text-xs sm:text-sm text-foreground mb-1 line-clamp-2">
               {product.name}
             </h4>
 
             {product.description && (
-              <p className="text-muted-foreground text-sm line-clamp-2 mb-3">
+              <p className="text-muted-foreground text-xs line-clamp-2 mb-2 hidden sm:block">
                 {product.description}
               </p>
             )}
           </div>
 
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1">
               {product.sale_price ? (
                 <>
-                  <span className="text-sm line-through text-gray-400">
+                  <span className="text-xs line-through text-gray-400">
                     ₹{product.price.toFixed(0)}
                   </span>
-                  <span className="text-lg font-bold text-tea-gold">
+                  <span className="text-sm font-bold text-tea-gold">
                     ₹{product.sale_price.toFixed(0)}
                   </span>
                 </>
               ) : (
-                <span className="text-lg font-bold text-foreground">
+                <span className="text-sm font-bold text-foreground">
                   ₹{product.price.toFixed(0)}
                 </span>
               )}
@@ -90,7 +90,7 @@ const ProductCardSmall = ({ product, onSelect }: { product: Product; onSelect: (
 
             <Button 
               variant="gold-outline" 
-              className="w-full text-sm py-2 h-auto group-hover:bg-tea-gold group-hover:text-tea-forest transition-all duration-300"
+              className="w-full text-xs py-1 h-auto px-2 group-hover:bg-tea-gold group-hover:text-tea-forest transition-all duration-300"
             >
               View
             </Button>

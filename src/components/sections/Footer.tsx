@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
-import { Instagram, Twitter, Facebook, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Twitter, Facebook, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { useCategories } from "@/hooks/useProducts";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const whatsappNumber = "+917602245644";
+  const address = "Address: Keshapat, Hatisal, West Bengal 721139";
+  const navigate = useNavigate();
+  const { data: categories = [] } = useCategories();
 
   const socialLinks = [
     { icon: Instagram, href: "#", label: "Instagram" },
@@ -11,18 +17,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { label: "Our Teas", href: "#products" },
+    { label: "Our Teas", href: "/shop" },
     { label: "About Us", href: "#about" },
     { label: "Process", href: "#process" },
     { label: "Contact", href: "#cta" },
-  ];
-
-  const teaLinks = [
-    { label: "Assam Black Tea", href: "#products" },
-    { label: "Green Tea", href: "#products" },
-    { label: "Herbal Tea", href: "#products" },
-    { label: "Masala Chai", href: "#products" },
-    { label: "Premium Gold Blend", href: "#products" },
   ];
 
   return (
@@ -103,16 +101,20 @@ const Footer = () => {
                 Our Teas
               </h4>
               <ul className="space-y-3">
-                {teaLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-tea-cream/60 hover:text-tea-gold transition-colors duration-300 text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <li key={category.id}>
+                      <button
+                        onClick={() => navigate(`/category/${category.id}`)}
+                        className="text-tea-cream/60 hover:text-tea-gold transition-colors duration-300 text-sm text-left"
+                      >
+                        {category.name}
+                      </button>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-tea-cream/60 text-sm">Loading categories...</li>
+                )}
               </ul>
             </motion.div>
           </div>
@@ -132,31 +134,56 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 mt-1 text-tea-gold flex-shrink-0" />
                   <span className="text-tea-cream/60 text-sm">
-                    Tea Estate Road, Assam<br />India - 786001
+                    {address}
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-tea-gold flex-shrink-0" />
                   <a 
-                    href="mailto:hello@foodistics.in" 
+                    href="mailto:foodistics2026@gmail.com" 
                     className="text-tea-cream/60 hover:text-tea-gold transition-colors text-sm"
                   >
-                    hello@foodistics.in
+                    foodistics2026@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-tea-gold flex-shrink-0" />
                   <a 
-                    href="tel:+919876543210" 
+                    href="tel:+917602245644" 
                     className="text-tea-cream/60 hover:text-tea-gold transition-colors text-sm"
                   >
-                    +91 98765 43210
+                    +91 7602 245 644
                   </a>
                 </li>
               </ul>
             </motion.div>
           </div>
         </div>
+
+        {/* Map Section */}
+        <motion.div
+          className="mt-12 pt-8 border-t border-tea-cream/10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <h4 className="font-serif text-lg font-semibold text-tea-cream mb-6">
+            Visit Our Store
+          </h4>
+          <div className="rounded-lg overflow-hidden">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.676393803899!2d87.7529218!3d22.441202699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02a525fcf20e63%3A0xebc14ca906275adc!2sFOODISTICS%20TEA!5e0!3m2!1sen!2sin!4v1771331424595!5m2!1sen!2sin" 
+              width="100%" 
+              height="300" 
+              style={{ border: 0 }} 
+              allowFullScreen={true}
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-lg"
+            ></iframe>
+          </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <motion.div

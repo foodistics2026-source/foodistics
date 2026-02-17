@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
+import Category from "./pages/Category";
 import Admin from "./pages/Admin";
 import Orders from "./pages/Orders";
 import Account from "./pages/Account";
@@ -13,6 +14,7 @@ import SignUp from "./pages/auth/SignUp";
 import SignIn from "./pages/auth/SignIn";
 import AdminSignIn from "./pages/auth/AdminSignIn";
 import NotFound from "./pages/NotFound";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +45,7 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/shop" element={<Shop />} />
+      <Route path="/category/:categoryId" element={<Category />} />
       <Route path="/orders" element={<Orders />} />
       <Route path="/account" element={<Account />} />
       <Route path="/admin" element={<Admin />} />
@@ -62,6 +65,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AppContent />
+        <WhatsAppWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
