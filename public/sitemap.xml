@@ -4,7 +4,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://getfoodistics.in/</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,21 +12,21 @@
   <!-- Main Pages -->
   <url>
     <loc>https://getfoodistics.in/shop</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getfoodistics.in/orders</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://getfoodistics.in/account</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -34,14 +34,14 @@
   <!-- Authentication Pages -->
   <url>
     <loc>https://getfoodistics.in/auth/signin</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://getfoodistics.in/auth/signup</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
