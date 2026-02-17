@@ -270,7 +270,7 @@ const HeroSection = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{ 
@@ -280,7 +280,7 @@ const HeroSection = () => {
       >
         <button 
           onClick={scrollToAbout}
-          className="text-tea-cream/50 hover:text-tea-gold transition-colors"
+          className="text-tea-cream/50 hover:text-tea-gold transition-colors flex items-center justify-center"
           aria-label="Scroll down"
         >
           <ChevronDown className="w-8 h-8" />
